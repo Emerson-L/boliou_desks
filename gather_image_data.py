@@ -8,8 +8,8 @@ from PyQt5.QtGui import QPixmap, QPainter, QPen, QImage, QKeySequence
 from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QShortcut, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt, QPoint
 
-INPUT_DIR = "desk_images"
-OUTPUT_FILE = "image_data.json"
+INPUT_DIR = "images/original_jpeg"
+OUTPUT_FILE = "image_data/6points.json"
 WINDOW_HEIGHT = 840
 
 class ImageLabel(QLabel):
@@ -19,7 +19,6 @@ class ImageLabel(QLabel):
         self.points = []
         self.scale_factor = scale_factor
 
-    # Handle mouse clicks
     def mousePressEvent(self, event) -> None:
         if event.button() == Qt.LeftButton:
             x = int(event.pos().x() / self.scale_factor)
@@ -27,7 +26,6 @@ class ImageLabel(QLabel):
             self.points.append((x, y))
             self.update()
 
-    # Drawing circles where clicked
     def paintEvent(self, event) -> None:
         super().paintEvent(event)
         painter = QPainter(self)
@@ -46,7 +44,6 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Click to select points")
         self.label = None
 
-        # Save button, save shortcut, undo shortcut
         self.save_btn = QPushButton("Save and Next", self)
         self.save_btn.clicked.connect(self.save_and_next)
         self.save_btn.setFixedWidth(150)
@@ -55,7 +52,6 @@ class MainWindow(QMainWindow):
         self.shortcut_open = QShortcut(QKeySequence("Ctrl+Z"), self)
         self.shortcut_open.activated.connect(self.undo_last_point)
 
-        # For layout
         self.central_widget = QWidget(self)
         self.vbox = QVBoxLayout(self.central_widget)
         self.vbox.setContentsMargins(0, 0, 0, 0)
@@ -84,7 +80,6 @@ class MainWindow(QMainWindow):
         self.pbar.update()
         self.setWindowTitle(f"Click to select points ({image_file})")
 
-        # Handle image size and screen size
         screen = QApplication.primaryScreen()
         screen_rect = screen.availableGeometry()
         max_width, max_height = int(screen_rect.width()), int(WINDOW_HEIGHT)

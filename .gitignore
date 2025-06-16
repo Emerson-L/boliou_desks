@@ -1,4 +1,4 @@
-desk_images/
-image_data_4pt.json
-image_data.json
+images/
+image_data/
+__pycache__/
 .DS_Store
