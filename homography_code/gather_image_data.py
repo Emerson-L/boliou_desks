@@ -7,9 +7,10 @@ from PIL import Image
 from PyQt5.QtGui import QPixmap, QPainter, QPen, QImage, QKeySequence
 from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QShortcut, QVBoxLayout, QWidget
 from PyQt5.QtCore import Qt, QPoint
+from collections import Counter
 
-INPUT_DIR = "images/original_jpeg"
-OUTPUT_FILE = "image_data/6points.json"
+INPUT_DIR = "images/undistorted"
+OUTPUT_FILE = "image_data/16points_1.json"
 WINDOW_HEIGHT = 840
 
 class ImageLabel(QLabel):
@@ -112,6 +113,15 @@ class MainWindow(QMainWindow):
             self.label.points.pop()
             self.label.update()
 
+def print_data_info() -> None:
+    with Path.open(OUTPUT_FILE, "r") as f:
+        point_data = json.load(f)
+    nums_points = []
+    for points in point_data.values():
+        nums_points.append(len(points))
+    for key, count in Counter(nums_points).items():
+        print(f"{key} occurs {count} times")
+
 if __name__ == "__main__":
     image_files = [f for f in os.listdir(INPUT_DIR) if f.lower().endswith(".jpeg")]
     if not image_files:
@@ -122,3 +132,5 @@ if __name__ == "__main__":
     window = MainWindow(image_files)
     window.show()
     sys.exit(app.exec_())
+
+    # print_data_info()
