@@ -1,4 +1,5 @@
 images/
 image_data/
+old_code/
 __pycache__/
 .DS_Store
