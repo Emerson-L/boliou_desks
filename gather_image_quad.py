@@ -10,7 +10,7 @@ from PyQt5.QtCore import Qt, QPoint
 from collections import Counter
 
 INPUT_DIR = "images/undistorted"
-OUTPUT_FILE = "image_data/quads_test.json"
+OUTPUT_FILE = "image_data_quads2.json"
 WINDOW_HEIGHT = 840
 DRAG_SELECT_DISTANCE = 40
 
