@@ -9,7 +9,7 @@ CALIBRATION_DIR = "images/calibration"
 CALIBRATION_BOARD = 7, 10
 
 # Print image metadata of all images in specified directory
-# For ensuring that images for calibration and homography are all similar enough
+# For ensuring that images for calibration and perspective warp are all similar enough
 def print_image_metadata(image_dir:str) -> None:
     keys_of_interest = ["Model", "ExifImageWidth", "ExifImageHeight", "FocalLength"]
     # Other possible paramaters to include to ensure full camera symmetry:
@@ -49,10 +49,6 @@ def calibrate(calibration_images_dir:str) -> None:
             objpoints.append(objp)
             corners2 = cv2.cornerSubPix(gray,corners, (11,11), (-1,-1), criteria)
             imgpoints.append(corners2)
-            #cv2.drawChessboardCorners(img, (7,6), corners2, ret)
-            #cv2.imshow('img', img)
-            #cv2.waitKey(500)
-    #cv2.destroyAllWindows()
 
     ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
     return mtx, dist
