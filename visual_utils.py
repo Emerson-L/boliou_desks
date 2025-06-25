@@ -4,7 +4,7 @@ import cv2
 from pathlib import Path
 import json
 import sys
-import boliou_desks.normalize as n
+import normalize as n
 
 def options() -> None:
     print(

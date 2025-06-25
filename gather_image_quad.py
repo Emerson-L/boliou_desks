@@ -10,7 +10,7 @@ from PyQt5.QtCore import Qt, QPoint
 from collections import Counter
 
 INPUT_DIR = "images/undistorted"
-OUTPUT_FILE = "image_data/quads.json"
+OUTPUT_FILE = "image_data/quads_test.json"
 WINDOW_HEIGHT = 840
 DRAG_SELECT_DISTANCE = 40
 
@@ -22,7 +22,7 @@ class ImageLabel(QLabel):
         self.scale_factor = scale_factor
         self.img_width = img_width
         self.img_height = img_height
-        self.dragging_idx = None  # Index of the point being dragged
+        self.dragging_idx = None
 
     def mousePressEvent(self, event) -> None:
         if event.button() == Qt.LeftButton:
@@ -30,12 +30,10 @@ class ImageLabel(QLabel):
             y_disp = int(event.pos().y() / self.scale_factor)
             x = x_disp
             y = self.img_height - y_disp
-            # Check if clicking near an existing point
             for idx, (px, py) in enumerate(self.points):
                 if abs(px - x) < DRAG_SELECT_DISTANCE and abs(py - y) < DRAG_SELECT_DISTANCE:
                     self.dragging_idx = idx
                     return
-            # Otherwise, add a new point if less than 4
             if len(self.points) < 4:
                 self.points.append((x, y))
                 self.update()
