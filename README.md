@@ -6,12 +6,12 @@ At a school named Carleton in a building named Boliou Hall, there lies an old au
 
 <p align="middle">
   <figure>
-    <img src="https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8" width="550" />
-    <figcaption>Caption goes here</figcaption>
+    <img src="https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8" width="500" />
+    <figcaption>Boliou 104</figcaption>
   <figure>
   <figure>
     <img src="https://github.com/user-attachments/assets/ce605004-689c-4638-8d6e-8e733f8287b6" width="251" /> 
-    <figcaption>Caption goes here</figcaption>
+    <figcaption>Taking pictures (with shade!)</figcaption>
   <figure>
 </p>
 
