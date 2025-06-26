@@ -7,7 +7,7 @@ from tqdm import tqdm
 from rembg import remove
 import calibrate_camera
 
-DATA_PATH = "image_data_quads.json"
+DATA_PATH = "assets/image_data_quads.json"
 RAW_DIR = "assets/raw_jpeg"
 UNDISTORTED_DIR = "assets/undistorted"
 WARPED_DIR = "assets/warped"
