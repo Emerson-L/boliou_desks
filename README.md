@@ -12,13 +12,16 @@ At a school named Carleton in a building named Boliou Hall, there lies an old au
 ## Process
 1. Take a bunch of pictures
 2. Gather image data on desk position within the image using `gather_image_quad.py` (made with PyQT5)
-3. Calibrate the camera using `calibrate_camera.py` and cal(made with OpenCV)
+3. Calibrate the camera using `calibrate_camera.py` and undistort the images (made with OpenCV)
 5. Warp the perspective to the average aspect ratio using `normalize.py` (made with OpenCV)
-6. Remove the background (with help from rembg)
+6. Remove the background (with help from [rembg](https://github.com/danielgatis/rembg))
+7. Display desks in a pattern (with help from [svg-pan-zoom](https://github.com/bumbu/svg-pan-zoom))
 
 <p align="middle">
   <img src="https://github.com/user-attachments/assets/c844a06f-9779-4091-9bcd-d72e05ad51cc" width="400" />
-  <p>Raw &#8594; Undistorted &#8594; Warped &#8594; Cropped</p>
+</p>
+<p align="middle>
+  Raw &#8594; Undistorted &#8594; Warped &#8594; Cropped
 </p>
 
 ## Disclaimer
