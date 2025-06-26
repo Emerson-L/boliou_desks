@@ -8,6 +8,12 @@ Boliou 104                 |   Taking pictures (with shade!)
 :-------------------------:|:-------------------------:
 ![](https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8)  |  ![](https://github.com/user-attachments/assets/ce605004-689c-4638-8d6e-8e733f8287b6)
 
+<p float="middle">
+  <img src="https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8" width="500" />
+  <img src="https://github.com/user-attachments/assets/ce605004-689c-4638-8d6e-8e733f8287b6" width="251" /> 
+</p>
+<center>Boliou 104            Taking pictures (with shade!)</center>
+
 ## Process
 1. Take a bunch of pictures
 2. Gather image data on desk position within the image using `gather_image_quad.py` (made with PyQT5)
@@ -15,10 +21,10 @@ Boliou 104                 |   Taking pictures (with shade!)
 5. Warp the perspective to the average aspect ratio using `normalize.py` (made with OpenCV)
 6. Remove the background (with help from rembg)
 
-Raw &#8594; Undistorted &#8594; Warped &#8594; Cropped
 <p align="middle">
   <img src="https://github.com/user-attachments/assets/c844a06f-9779-4091-9bcd-d72e05ad51cc" width="400" />
 </p>
+<center>Raw &#8594; Undistorted &#8594; Warped &#8594; Cropped</center>
 
 ## Disclaimer
 I take no responsibility for anything written or drawn on any of these desks. I have yet to find anything that I'd call overt hate speech on them, but also wouldn't say that everything on them is graceful. Similarly, I don't claim to have made any of the art. I'm only collaging what other students have put there themselves.
