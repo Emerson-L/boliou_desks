@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import cv2
+import cv2 as cv
 from pathlib import Path
 import json
 import sys
@@ -28,8 +28,8 @@ def graph_points() -> None:
 
 # Visualize original image next to warped image next to warped image
 def original_vs_warped(desk_num: int) -> None:
-    original = cv2.cvtColor(cv2.imread(Path(n.UNDISTORTED_DIR) / f"desk{desk_num}.jpeg"), cv2.COLOR_BGR2RGB)
-    warped = cv2.cvtColor(cv2.imread(Path(n.WARPED_DIR) / f"desk{desk_num}.jpeg"), cv2.COLOR_BGR2RGB)
+    original = cv.cvtColor(cv.imread(Path(n.UNDISTORTED_DIR) / f"desk{desk_num}.jpeg"), cv.COLOR_BGR2RGB)
+    warped = cv.cvtColor(cv.imread(Path(n.WARPED_DIR) / f"desk{desk_num}.jpeg"), cv.COLOR_BGR2RGB)
     fig, axes = plt.subplots(1, 3, figsize=(18, 8), dpi=100)
     for ax, img in zip(axes, [original, warped]):
         ax.imshow(img)
@@ -44,16 +44,22 @@ def compare_overlays(alpha:int = 0.04) -> None:
     fig = plt.figure(figsize=(12, 8))
     ax1 = fig.add_subplot(1, 2, 1)
     for img_path in original_paths:
-        img = cv2.cvtColor(cv2.imread(str(img_path)), cv2.COLOR_BGR2RGB)
+        img = cv.cvtColor(cv.imread(str(img_path)), cv.COLOR_BGR2RGB)
         ax1.imshow(img, alpha=alpha)
     ax1.axis("off")
 
     ax2 = fig.add_subplot(1, 2, 2)
     for img_path in warped_paths:
-        img = cv2.cvtColor(cv2.imread(str(img_path)), cv2.COLOR_BGR2RGB)
+        img = cv.cvtColor(cv.imread(str(img_path)), cv.COLOR_BGR2RGB)
         ax2.imshow(img, alpha=alpha)
     ax2.axis("off")
     fig.tight_layout()
+    plt.show()
+
+# Show cropped image
+def cropped(desk_num:int) -> None:
+    img = cv.cvtColor(cv.imread(str(Path(n.CROPPED_DIR) / f"desk{desk_num}.png")), cv.COLOR_BGR2RGB)
+    plt.imshow(img)
     plt.show()
 
 if __name__ == "__main__":

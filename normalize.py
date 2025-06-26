@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import numpy as np
 import cv2 as cv
+from PIL import Image
 from tqdm import tqdm
 from rembg import remove
 import calibrate_camera
@@ -63,14 +64,14 @@ def create_mask(folder:str, pattern:str="*.jpeg") -> cv.Mat:
     _, mask = cv.threshold(grayscale, MASKING_VALUE, 255, cv.THRESH_BINARY)
     return mask
 
-# Apply the mask and threshold for converting to png
-def mask_to_png(img:cv.Mat, mask:cv.Mat) -> cv.Mat:
-    masked = cv.bitwise_and(img, img, mask = mask)
-    tmp_grayscale = cv.cvtColor(masked, cv.COLOR_BGR2GRAY)
-    _, alpha = cv.threshold(tmp_grayscale, 0, 255, cv.THRESH_BINARY)
-    b, g, r = cv.split(masked)
-    rgba = [b, g, r, alpha]
-    return cv.merge(rgba, 4)
+# Apply the mask and make black pixels transparent using RGBA
+def mask_to_rgba(img:cv.Mat, mask:cv.Mat) -> cv.Mat:
+    png_masked = cv.bitwise_and(img, img, mask=mask)
+    rgb = cv.cvtColor(png_masked, cv.COLOR_BGR2RGB)
+    rgba = np.dstack([rgb, np.ones(rgb.shape[:2], dtype=np.uint8) * 255])
+    black_pixels = np.all(rgb == [0, 0, 0], axis=-1)
+    rgba[black_pixels, 3] = 0
+    return rgba
 
 if __name__ == "__main__":
     with Path.open(DATA_PATH, "r") as f:
@@ -79,7 +80,6 @@ if __name__ == "__main__":
     mtx, dist = calibrate_camera.calibrate(calibrate_camera.CALIBRATION_DIR)
 
     goal_width, goal_height = find_average_dimensions(point_data.values())
-
     goal_corners = np.array([[0, goal_height],
                              [goal_width, goal_height],
                              [0, 0],
@@ -91,14 +91,19 @@ if __name__ == "__main__":
         img = cv.imread(Path(RAW_DIR) / img_name)
         img_undistorted = undistort_image(img)
         desk_corners = np.array(point_data[img_name], dtype = np.float32)
-        img_warp = do_perspective_warp(img_undistorted, desk_corners, goal_corners)
+        img_warp = do_perspective_warp(img_undistorted, desk_corners, goal_corners) # Makes images 2539 x 3568
         cv.imwrite(Path(WARPED_DIR) / img_name, img_warp)
 
-    # Create mask from warped images, mask all images, convert to PNG
-    # Could: Remove leftover background with rembg
+    # Create mask from warped images, then for all images: mask, convert to RGBA,
+    # resize and optimize using PIL and save as png
+    # Could also: Remove leftover background with rembg
     mask = create_mask(WARPED_DIR)
     Path(CROPPED_DIR).mkdir(parents=True, exist_ok=True)
     for img_name in tqdm([img.name for img in Path(WARPED_DIR).glob("*.jpeg")]):
         img = cv.imread(Path(WARPED_DIR) / img_name)
-        masked_png = mask_to_png(img, mask)
-        cv.imwrite((Path(CROPPED_DIR) / img_name).with_suffix(".png"), masked_png)
+        img_masked = mask_to_rgba(img, mask)
+        png_pil = Image.fromarray(img_masked, mode = "RGBA")
+        png_resized = png_pil.resize((round(goal_width/2), round(goal_height/2)), Image.LANCZOS) # Makes images 1270 x 1784
+        png_resized.save((Path(CROPPED_DIR) / img_name).with_suffix(".png"), optimize=True, quality=95)
+
+
