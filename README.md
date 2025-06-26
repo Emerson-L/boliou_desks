@@ -8,18 +8,18 @@ At a school named Carleton in a building named Boliou Hall, there lies an old au
   <figure>
     <img src="https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8" width="500" />
     <figcaption>Boliou 104</figcaption>
-  <figure>
+  </figure>
   <figure>
     <img src="https://github.com/user-attachments/assets/ce605004-689c-4638-8d6e-8e733f8287b6" width="251" /> 
     <figcaption>Taking pictures (with shade!)</figcaption>
-  <figure>
+  </figure>
 </p>
 
 ## Disclaimer
 I take no responsibility for anything written or drawn on any of these desks. I have yet to find anything that I'd call overt hate speech on them, but also wouldn't say that everything on them is graceful. Similarly, I don't claim to have made any of the art. I'm only collaging what other students have put there themselves.
 
 ## Process
-- take a picture, calibrate camera and undistort the image, warp the image to the average aspect ratio, remove the background
+Take a picture, calibrate camera and undistort, warp perspective to the average aspect ratio, remove the background
 <p align="middle">
   <img src="https://github.com/user-attachments/assets/c844a06f-9779-4091-9bcd-d72e05ad51cc" width="500" />
 </p>
