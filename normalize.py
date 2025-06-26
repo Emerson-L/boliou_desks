@@ -8,10 +8,10 @@ from rembg import remove
 import calibrate_camera
 
 DATA_PATH = "image_data_quads.json"
-RAW_DIR = "images/raw_jpeg"
-UNDISTORTED_DIR = "images/undistorted"
-WARPED_DIR = "images/warped"
-CROPPED_DIR = "images/cropped"
+RAW_DIR = "assets/raw_jpeg"
+UNDISTORTED_DIR = "assets/undistorted"
+WARPED_DIR = "assets/warped"
+CROPPED_DIR = "assets/cropped"
 
 MASKING_VALUE = 85 #0-255, higher making a tighter mask
 

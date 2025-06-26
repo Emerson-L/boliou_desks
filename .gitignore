@@ -1,7 +1,7 @@
-images/calibration/
-images/raw_jpeg/
-images/undistorted/
-images/warped/
+assets/calibration/
+assets/raw_jpeg/
+assets/undistorted/
+assets/warped/
 image_data/
 archive/
 __pycache__/

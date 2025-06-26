@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QSho
 from PyQt5.QtCore import Qt, QPoint
 from collections import Counter
 
-INPUT_DIR = "images/undistorted"
+INPUT_DIR = "assets/undistorted"
 OUTPUT_FILE = "image_data_quads2.json"
 WINDOW_HEIGHT = 840
 DRAG_SELECT_DISTANCE = 40

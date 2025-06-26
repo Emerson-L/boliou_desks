@@ -5,7 +5,7 @@ from PIL import Image, ExifTags
 from tqdm import tqdm
 from collections import Counter
 
-CALIBRATION_DIR = "images/calibration"
+CALIBRATION_DIR = "assets/calibration"
 CALIBRATION_BOARD = 7, 10
 
 # Print image metadata of all images in specified directory
