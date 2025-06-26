@@ -2,7 +2,7 @@
 
 [Explore it here.](https://emerson-l.github.io/boliou_desks/)
 
-At a school named Carleton in a building named Boliou Hall, there lies an old auditorium with 121 desks. Almost all of the desks sport a smattering of etchings made by distracted students, likely dating back to when the building was renovated in 1995. In my behavioral neuroscience class, my usual desk said "I've fallen and I can't get up," made a statement about the sexuality of one of our ultimate frisbee teams, and firmly demanded that I "TAKE LINGUISTICS!" I wanted to make a collage of all graffiti of students past and present, so I took pictures of all of the desks, manually gathered data on the locations of the desk within those pictures, did some image processing, and put the desks together in a pseudo-tessellation.
+At a school named Carleton in a building named Boliou Hall, there lies an old auditorium with 121 desks. Almost all of the desks sport a smattering of etchings made by distracted students, likely dating back to when the building was renovated in 1995. In my behavioral neuroscience class, my usual desk said "I've fallen and I can't get up," made a statement about the sexuality of one of our ultimate frisbee teams, and firmly demanded that I "TAKE LINGUISTICS!" I wanted to make a collage of all of the graffiti made by students past and present on these desks, so I took pictures of all of them, manually gathered data on the locations of the desk within those pictures, did some image processing, and put the desks together in a pseudo-tessellation.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/39a55e7a-ae29-4f5b-bbe8-7405fc4f94a8" width="500" />
