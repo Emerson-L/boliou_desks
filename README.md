@@ -9,7 +9,7 @@ At a school named Carleton in a building named Boliou Hall, there lies an old au
   <img src="https://github.com/user-attachments/assets/ce605004-689c-4638-8d6e-8e733f8287b6" width="251" /> 
 </p>
 <p align="middle">
-  Left: Boliou 104. Right: Taking pictures (with shade!)
+  Boliou 104 and me taking pictures there (with shade for the glare)
 </p>
 
 ## Process
