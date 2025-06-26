@@ -30,6 +30,10 @@ At a school named Carleton in a building named Boliou Hall, there lies an old au
 ## Disclaimer
 I take no responsibility for anything written or drawn on any of these desks. I have yet to find anything that I'd call overt hate speech on them, but also wouldn't say that everything on them is graceful. Similarly, I don't claim to have made any of the art. I'm only collaging what other students have put there themselves.
 
+### To Do
+ - Retake blurry photos of desks 17, 46, 68, 72, 102, 121
+ - Better UI: buffer space in case quadrangle is too big, warning messages
+
 
 
 
