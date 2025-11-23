@@ -9,8 +9,8 @@ from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QSho
 from PyQt5.QtCore import Qt, QPoint
 from collections import Counter
 
-INPUT_DIR = "assets/undistorted"
-OUTPUT_FILE = "assets/image_data_quads2.json"
+INPUT_DIR = "assets/raw_jpeg_new"
+OUTPUT_FILE = "assets/image_data_quads_new2.json"
 WINDOW_HEIGHT = 840
 DRAG_SELECT_DISTANCE = 40
 
@@ -193,9 +193,9 @@ def print_data_info() -> None:
         print(f"{key} occurs {count} times")
 
 if __name__ == "__main__":
-    image_files = [f for f in os.listdir(INPUT_DIR) if f.lower().endswith(".jpeg")]
+    image_files = [f for f in os.listdir(INPUT_DIR) if f.lower().endswith('.jpeg')]
     if not image_files:
-        print(f"No JPEG images found in {INPUT_DIR}")
+        print(f"No images found in {INPUT_DIR}")
         sys.exit()
 
     app = QApplication(sys.argv)

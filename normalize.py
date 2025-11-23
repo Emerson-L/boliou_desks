@@ -44,8 +44,8 @@ def find_average_dimensions(quads: list) -> tuple:
 
 # Create a mask by blending all warped images, removing the background, converting to grayscale,
 # and then thresholding.
-def create_mask(folder:str, pattern:str="*.jpeg") -> cv.Mat:
-    image_paths = sorted(Path(folder).glob(pattern))
+def create_mask(folder:str) -> cv.Mat:
+    image_paths = sorted(Path(folder).glob("*.jpeg"))
     base_img = cv.imread(str(image_paths[0])).astype(np.float32)
     h, w, c = base_img.shape
     blend = np.zeros((h, w, c), dtype=np.float32)
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     # Undistort, warp perspective, save warped images
     Path(WARPED_DIR).mkdir(parents=True, exist_ok=True)
-    for img_name in tqdm([img.name for img in Path(RAW_DIR).glob("*.jpeg")]):
+    for img_name in tqdm([img.name for img in Path(RAW_DIR).glob("*.jpeg")], desc="Undistorting, warping"):
         img = cv.imread(Path(RAW_DIR) / img_name)
         img_undistorted = undistort_image(img)
         desk_corners = np.array(point_data[img_name], dtype = np.float32)
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # Could also: Remove leftover background with rembg
     mask = create_mask(WARPED_DIR)
     Path(CROPPED_DIR).mkdir(parents=True, exist_ok=True)
-    for img_name in tqdm([img.name for img in Path(WARPED_DIR).glob("*.jpeg")]):
+    for img_name in tqdm([img.name for img in Path(WARPED_DIR).glob("*.jpeg")], desc="Masking, converting, resizing, optimizing"):
         img = cv.imread(Path(WARPED_DIR) / img_name)
         img_masked = mask_to_rgba(img, mask)
         png_pil = Image.fromarray(img_masked, mode = "RGBA")
